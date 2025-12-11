@@ -1,6 +1,6 @@
 {
-  "vendor": "vtex",
-  "name": "store-theme",
+  "vendor": "hibrido",
+  "name": "store-theme-by-joaofssantos",
   "version": "5.2.0",
   "builders": {
     "styles": "2.x",
