@@ -1,0 +1,1 @@
+# hibrido.store-theme
