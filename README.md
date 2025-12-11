@@ -1,3 +1,2 @@
 # hibrido.store-theme
 
-tbd
