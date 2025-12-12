@@ -1,0 +1,13 @@
+{
+	"store.custom#nossas-lojas": {
+		"children": [
+            "rich-text#nossas-lojas"
+		]
+	},
+
+    "rich-text#nossas-lojas": {
+        "props": {
+            "text": "### Nossas Lojas"
+        }
+    }
+}
