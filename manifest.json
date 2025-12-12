@@ -1,7 +1,7 @@
 {
   "vendor": "hibrido",
   "name": "store-theme-by-joaofssantos",
-  "version": "5.2.0",
+  "version": "1.0.0",
   "builders": {
     "styles": "2.x",
     "store": "0.x",
