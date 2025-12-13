@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/*
+ * Função que arredonda valores decimais com sass
+ */
+/*
+ * Converte Px para rem
+*/
+/*
+ * Uma maneira de gerar tamanhos flexiveis de uma tela para outra,
+ * da forma que em telas intermediarias, os espaços fiquem sincronizados
+ *
+ * @exemple
+ * no decktop com 1000px deve ter uma margem de 100px
+ * no mobile com 500px deve ter uma margem de 50px
+ * usando esse mixin quando a pessoa tiver em uma tela de
+ * 750px a borda vai estar com 75px sem usar @media
+ */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (min-width: 1026px) {
+  .stores {
+    padding: max(1rem, min(-0.235rem + 1.928vw, 1.5rem)) max(1.25rem, min(-0.602rem + 2.892vw, 2rem)) 4px max(2rem, min(0.148rem + 2.892vw, 2.75rem));
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 1025px) {
+  .stores {
+    padding: 1.25rem 0 0;
+  }
+  .stores [class*=swiper-button-prev],
+  .stores [class*=swiper-button-next] {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1026px) {
+  .store {
+    padding-bottom: 1.5rem;
+  }
+  .store:not(:last-child) {
+    border-bottom: 1px solid #E7E7E7;
+  }
+}
+@media (max-width: 1025px) {
+  .store {
+    border: 1px solid #E7E7E7;
+    border-radius: 0.5rem;
+    height: 18.25rem;
+    padding: 1.25rem 0.75rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.store[aria-selected=true]::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0.25rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #FBBE3A;
+}
+@media (min-width: 1026px) {
+  .store[aria-selected=true]::before {
+    left: -12px;
+    top: 0;
+    transform: translateX(-100%);
+  }
+}
+@media (max-width: 1025px) {
+  .store[aria-selected=true]::before {
+    left: 10px;
+    top: 20px;
+  }
+}
+
+@media (min-width: 1026px) {
+  .buttons {
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 1025px) {
+  .buttons {
+    margin-top: auto;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1026px) {
+  .button--store {
+    width: 10rem;
+  }
+}
+@media (max-width: 1025px) {
+  .button--store {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1026px) {
+  .button--whatsApp {
+    width: 180px;
+  }
+}
+@media (max-width: 1025px) {
+  .button--whatsApp {
+    width: 100%;
+  }
+}
+
+.item__title {
+  margin-bottom: 0.125rem;
+}
+
+.item__icon {
+  width: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
+  height: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
+  min-width: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
+  min-height: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
+}
+
+@media (min-width: 1026px) {
+  .item__subtitle {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 1025px) {
+  .item__subtitle {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.items {
+  gap: 0.5rem;
+}
+@media (max-width: 1025px) {
+  .items {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.item {
+  gap: 0.5rem;
+}
+
+.item__text {
+  font-size: max(0.875rem, min(0.721rem + 0.241vw, 0.9375rem));
+}
+
+.item__text-map-button {
+  font-size: max(0.75rem, min(0.596rem + 0.241vw, 0.8125rem));
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+}
+.item__text-map-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 1px;
+  background: #FBBE3A;
+  height: 1px;
+  transition-property: right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.item__text-map-button:hover::before {
+  right: 0;
+}

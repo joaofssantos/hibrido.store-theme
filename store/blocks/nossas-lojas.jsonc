@@ -1,13 +1,80 @@
 {
-	"store.custom#nossas-lojas": {
-		"children": [
-            "rich-text#nossas-lojas"
-		]
-	},
+  "store.custom#nossas-lojas": {
+    "children": ["our-stores"]
+  },
 
-    "rich-text#nossas-lojas": {
-        "props": {
-            "text": "### Nossas Lojas"
+  "our-stores": {
+    "props": {
+      "title": "A Automax está sempre perto de você",
+      "subTitle": "Confira nossas lojas físicas e venha nos visitar!",
+      "filter": {
+        "title": "Por onde estamos:"
+      },
+      "stores": [
+        {
+          "__editorItemTitle": "Automax - Uberlândia",
+
+          "phone": "11987147626",
+          "addressLabel": "Rua Joaquim Galdino Teixeira",
+          "addressNumber": "115",
+          "neighborhood": "Shopping Park",
+          "city": "Uberlândia",
+          "state": "Minas Gerais",
+          "cep": "38425-465",
+          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "map": {
+            "latitude": -18.991662,
+            "longitude": -48.270282
+          }
+        },
+        {
+          "__editorItemTitle": "Automax - Rio de Janeiro",
+          "phone": "11987147626",
+          "addressLabel": "Avenida Afrânio de Melo Franco",
+          "addressNumber": "290",
+          "neighborhood": "Leblon",
+          "city": "Rio de Janeiro",
+          "state": "Rio de Janeiro",
+          "cep": "22430-060",
+          "timeLabel": "Segunda à Sexta das 08h às 18h \n Sábado das 08h às 17h.",
+          "map": {
+            "latitude": -22.982178,
+            "longitude": -43.217933
+          }
+        },
+        {
+          "__editorItemTitle": "Automax - São Paulo",
+          "phone": "11987147626",
+          "addressLabel": "Avenida Paulista",
+          "addressNumber": "1578",
+          "neighborhood": "Bela Vista",
+          "city": "São Paulo",
+          "state": "São Paulo",
+          "cep": "01310-200",
+
+          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "map": {
+            "latitude": -23.564975,
+            "longitude": -46.652257
+          }
+        },
+        {
+          "__editorItemTitle": "Automax - Vila Velha",
+          "phone": "11987147626",
+          "addressLabel": "Avenida Luciano das Neves",
+          "addressNumber": "2418",
+          "neighborhood": "Divino Espírito Santo",
+          "city": "Vila Velha",
+          "state": "Espírito Santo",
+          "cep": "29107-900",
+
+          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "map": {
+            "latitude": -20.352185,
+            "longitude": -40.297244
+          }
         }
+      ]
     }
+  }
 }

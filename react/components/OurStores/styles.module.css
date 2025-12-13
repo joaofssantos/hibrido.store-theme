@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/*
+ * Função que arredonda valores decimais com sass
+ */
+/*
+ * Converte Px para rem
+*/
+/*
+ * Uma maneira de gerar tamanhos flexiveis de uma tela para outra,
+ * da forma que em telas intermediarias, os espaços fiquem sincronizados
+ *
+ * @exemple
+ * no decktop com 1000px deve ter uma margem de 100px
+ * no mobile com 500px deve ter uma margem de 50px
+ * usando esse mixin quando a pessoa tiver em uma tela de
+ * 750px a borda vai estar com 75px sem usar @media
+ */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.container {
+  display: grid;
+}
+@media (min-width: 1026px) {
+  .container {
+    grid-template: "title title" "filter map"/auto 1fr;
+    column-gap: max(1rem, min(-0.852rem + 2.892vw, 1.75rem));
+    row-gap: 0;
+  }
+}
+@media (max-width: 1025px) {
+  .container {
+    grid-template: "title" "map" "filter"/100%;
+    column-gap: max(1rem, min(-0.852rem + 2.892vw, 1.75rem));
+    row-gap: 0;
+  }
+}
+
+@media (min-width: 1026px) {
+  .wrapper {
+    margin-bottom: max(3rem, min(0.53rem + 3.855vw, 4rem));
+  }
+}
+@media (max-width: 1025px) {
+  .wrapper {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.mainContainer {
+  max-width: 1200px;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.mapSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .mapSection {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,101 @@
+import React, { useEffect, useRef } from 'react'
+import L from 'leaflet'
+import { Store, Map } from '../../types'
+
+// Fix leaflet icon issue
+// @ts-ignore
+delete (L.Icon.Default.prototype)._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+})
+
+interface Props {
+    stores: Store[]
+    center: Map | null
+}
+
+export function OurStoreMap({ stores, center }: Props) {
+  const mapRef = useRef<HTMLDivElement>(null)
+  const mapInstanceRef = useRef<L.Map | null>(null)
+  const markersRef = useRef<L.Marker[]>([])
+
+  useEffect(() => {
+    if (!mapRef.current) return
+
+    if (!mapInstanceRef.current) {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+      document.head.appendChild(link)
+
+      mapInstanceRef.current = L.map(mapRef.current).setView([-23.5505, -46.6333], 10) // Default to Sao Paulo
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(mapInstanceRef.current)
+
+      // Force map invalidation to ensure correct rendering
+      setTimeout(() => {
+        mapInstanceRef.current?.invalidateSize()
+      }, 200)
+    }
+
+    // Update map view if center is provided
+    if (center && mapInstanceRef.current) {
+      mapInstanceRef.current.setView([center.latitude, center.longitude], 15)
+    }
+
+    // Clear old markers
+    const currentMarkers: L.Marker[] = markersRef.current
+    currentMarkers.forEach((marker: L.Marker) => {
+      mapInstanceRef.current?.removeLayer(marker)
+    })
+    markersRef.current = []
+
+    // Add new markers
+    const bounds = L.latLngBounds([])
+    let hasMarkers = false
+    const currentStores: Store[] = stores
+
+    currentStores.forEach((store: Store) => {
+      if (store.map && store.map.latitude && store.map.longitude) {
+        const marker = L.marker([store.map.latitude, store.map.longitude])
+
+        marker.bindPopup(`
+          <div style="font-size: 14px; line-height: 1.4;">
+            <strong style="display: block; margin-bottom: 4px; color: #0f3e99;">${store.__editorItemTitle}</strong><br/>
+            ${store.addressLabel || ''}<br/>
+            ${store.timeLabel || ''}
+          </div>
+        `)
+
+        marker.addTo(mapInstanceRef.current!)
+        markersRef.current.push(marker)
+        bounds.extend([store.map.latitude, store.map.longitude])
+        hasMarkers = true
+      }
+    })
+
+    // Fit bounds if there are markers and no specific center is selected
+    if (hasMarkers && mapInstanceRef.current && !center) {
+      mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] })
+    }
+    
+    // Invalidate size to ensure map renders correctly after layout changes
+    if (mapInstanceRef.current) {
+        setTimeout(() => {
+            mapInstanceRef.current?.invalidateSize()
+        }, 100)
+    }
+
+  }, [stores, center])
+
+  return (
+    <div className="store-map-container" style={{ height: '100%', maxWidth: '600px', width: '100%', borderRadius: '8px', overflow: 'hidden', marginTop: '1rem', zIndex: 0 }}>
+      <div ref={mapRef} className="store-map" style={{ height: '100%', width: '100%', zIndex: 0 }} />
+    </div>
+  )
+}

@@ -4,14 +4,16 @@
     "jsx": "react",
     "noEmitOnError": false,
     "lib": [
-      "dom"
+      "dom",
+      "es2017"
     ],
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2017"
+    "target": "es2017",
+    "types": ["leaflet"],
+    "skipLibCheck": true
   },
   "include": [
-    "./typings/*.d.ts",
     "./**/*.tsx",
     "./**/*.ts"
   ]
