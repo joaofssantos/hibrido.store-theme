@@ -73,6 +73,11 @@
   }
 }
 
+.headerContainer {
+display: flex;
+flex-direction: column;
+}
+
 .mapSection {
   display: flex;
   flex-direction: row;

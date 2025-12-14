@@ -1,150 +1,3 @@
-@charset "UTF-8";
-/*
- * Função que arredonda valores decimais com sass
- */
-/*
- * Converte Px para rem
-*/
-/*
- * Uma maneira de gerar tamanhos flexiveis de uma tela para outra,
- * da forma que em telas intermediarias, os espaços fiquem sincronizados
- *
- * @exemple
- * no decktop com 1000px deve ter uma margem de 100px
- * no mobile com 500px deve ter uma margem de 50px
- * usando esse mixin quando a pessoa tiver em uma tela de
- * 750px a borda vai estar com 75px sem usar @media
- */
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@media (min-width: 1026px) {
-  .stores {
-    padding: max(1rem, min(-0.235rem + 1.928vw, 1.5rem)) max(1.25rem, min(-0.602rem + 2.892vw, 2rem)) 4px max(2rem, min(0.148rem + 2.892vw, 2.75rem));
-    gap: 1.5rem;
-  }
-}
-@media (max-width: 1025px) {
-  .stores {
-    padding: 1.25rem 0 0;
-  }
-  .stores [class*=swiper-button-prev],
-  .stores [class*=swiper-button-next] {
-    display: none !important;
-  }
-}
-
-@media (min-width: 1026px) {
-  .store {
-    padding-bottom: 1.5rem;
-  }
-  .store:not(:last-child) {
-    border-bottom: 1px solid #E7E7E7;
-  }
-}
-@media (max-width: 1025px) {
-  .store {
-    border: 1px solid #E7E7E7;
-    border-radius: 0.5rem;
-    height: 18.25rem;
-    padding: 1.25rem 0.75rem 1.25rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-  }
-}
-.store[aria-selected=true]::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0.25rem;
-  height: 3rem;
-  border-radius: 0.75rem;
-  background-color: #FBBE3A;
-}
-@media (min-width: 1026px) {
-  .store[aria-selected=true]::before {
-    left: -12px;
-    top: 0;
-    transform: translateX(-100%);
-  }
-}
-@media (max-width: 1025px) {
-  .store[aria-selected=true]::before {
-    left: 10px;
-    top: 20px;
-  }
-}
-
-@media (min-width: 1026px) {
-  .buttons {
-    margin-top: 1.5rem;
-    gap: 0.5rem;
-  }
-}
-@media (max-width: 1025px) {
-  .buttons {
-    margin-top: auto;
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1026px) {
-  .button--store {
-    width: 10rem;
-  }
-}
-@media (max-width: 1025px) {
-  .button--store {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1026px) {
-  .button--whatsApp {
-    width: 180px;
-  }
-}
-@media (max-width: 1025px) {
-  .button--whatsApp {
-    width: 100%;
-  }
-}
-
-.item__title {
-  margin-bottom: 0.125rem;
-}
-
-.item__icon {
-  width: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
-  height: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
-  min-width: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
-  min-height: max(1.5rem, min(0.265rem + 1.928vw, 2rem));
-}
-
-@media (min-width: 1026px) {
-  .item__subtitle {
-    margin-bottom: 1rem;
-  }
-}
-@media (max-width: 1025px) {
-  .item__subtitle {
-    margin-bottom: 1.5rem;
-  }
-}
-
-.items {
-  gap: 0.5rem;
-}
-@media (max-width: 1025px) {
-  .items {
-    margin-bottom: 1.5rem;
-  }
-}
 
 
 .filterItemsContainer {
@@ -152,6 +5,7 @@
 
     overflow-y: scroll;
     height: calc(100vh - 250px);
+    max-width: 420px;
 }
 .filterItemsContainer::-webkit-scrollbar {
     width: 8px;
@@ -165,7 +19,15 @@
     border-radius: 4px;
 }
 
-
+.phoneLink{
+    display:block;
+    margin-top:8px;
+    color:#cf4759;
+    font-weight:600;
+    text-decoration:none;
+    margin-bottom: .5rem;
+    text-decoration: none;
+}
 .viewMapButton{
     background: #375b99;
     color:#fff;

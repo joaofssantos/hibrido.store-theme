@@ -43,6 +43,16 @@ export function OurStoreMap({ stores, center }: Props) {
       // Force map invalidation to ensure correct rendering
       setTimeout(() => {
         mapInstanceRef.current?.invalidateSize()
+
+        // Re-fit bounds after invalidating size to ensure correct zoom
+        if (markersRef.current.length > 0) {
+            const bounds = L.latLngBounds([])
+            markersRef.current.forEach(marker => {
+                const latLng = marker.getLatLng()
+                bounds.extend(latLng)
+            })
+            mapInstanceRef.current?.fitBounds(bounds, { padding: [50, 50] })
+        }
       }, 200)
     }
 
@@ -64,8 +74,9 @@ export function OurStoreMap({ stores, center }: Props) {
 
         marker.bindPopup(`
           <div style="font-size: 14px; line-height: 1.4;">
-            <strong style="display: block; margin-bottom: 4px; color: #0f3e99;">${store.title}</strong><br/>
-            ${store.addressLabel || ''}<br/>
+            <strong style="display: block; margin-bottom: 4px; color: #0f3e99;">${store.__editorItemTitle}</strong><br/>
+            ${store.phone ? `Telefone: ${store.phone}<br/>` : ''}<br/>
+            ${store.addressLabel|| ''}, ${store.addressNumber || ''}, ${store.neighborhood || ''}, ${store.city || ''}, ${store.state || ''}, ${store.cep || ''}<br/>
             ${store.timeLabel || ''}
           </div>
         `)

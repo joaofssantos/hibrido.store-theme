@@ -70,6 +70,7 @@ export function FilterItem(
           neighborhood={p.neighborhood}
           city={p.city}
           state={p.state}
+          phone={p.phone}
           cep={p.cep}
           map={p.map}
           onViewMap={setCurrentMap}
@@ -87,6 +88,7 @@ function ItemLocation({
   city,
   state,
   cep,
+  phone,
   map,
   onViewMap,
 }: Pick<
@@ -95,6 +97,7 @@ function ItemLocation({
   | "addressNumber"
   | "neighborhood"
   | "city"
+  | "phone"
   | "state"
   | "cep"
   | "map"
@@ -107,6 +110,9 @@ function ItemLocation({
         <p>
           {addressLabel}, {addressNumber}, {neighborhood}, {city}, {state},{cep}
         </p>
+        <a className={styles.phoneLink} href={`tel:${phone}`}>
+          {phone}
+        </a>
         {map && (
           <>
             <button

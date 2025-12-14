@@ -53,7 +53,13 @@ export const OurStores = (props: IProps) => {
 
   return (
     <div className={styles.mainContainer}>
-      <h2>{props.title}</h2>
+<div className={
+styles.headerContainer
+}>
+        <h2>{props.title}</h2>
+      <h3>{props.subTitle}</h3>
+</div>
+
  
         <StateCityFilter
           states={states}
@@ -116,7 +122,7 @@ OurStores.schema = {
             type: "string"
           },
           phone: {
-            title: "Link do WhatsApp",
+            title: "Telefone",
             type: "string",
           },
           addressLabel: {
