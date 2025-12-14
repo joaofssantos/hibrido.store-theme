@@ -114,6 +114,7 @@ function ItemLocation({
               onClick={(e) => {
                 e.stopPropagation();
                 onViewMap();
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
 			  className={styles.viewMapButton}
             >

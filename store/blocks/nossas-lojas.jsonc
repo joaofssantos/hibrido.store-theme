@@ -21,7 +21,7 @@
           "city": "Uberlândia",
           "state": "Minas Gerais",
           "cep": "38425-465",
-          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "timeLabel": "Segunda à Sexta das 09h às 18h.",
           "map": {
             "latitude": -18.991662,
             "longitude": -48.270282
@@ -36,7 +36,7 @@
           "city": "Rio de Janeiro",
           "state": "Rio de Janeiro",
           "cep": "22430-060",
-          "timeLabel": "Segunda à Sexta das 08h às 18h \n Sábado das 08h às 17h.",
+          "timeLabel": "Segunda à Sexta das 08h às 18h.",
           "map": {
             "latitude": -22.982178,
             "longitude": -43.217933
@@ -52,7 +52,7 @@
           "state": "São Paulo",
           "cep": "01310-200",
 
-          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "timeLabel": "Segunda à Sexta das 09h às 18h.",
           "map": {
             "latitude": -23.564975,
             "longitude": -46.652257
@@ -68,7 +68,7 @@
           "state": "Espírito Santo",
           "cep": "29107-900",
 
-          "timeLabel": "Segunda à Sexta das 09h às 18h \n Sábado das 09h às 13h.",
+          "timeLabel": "Segunda à Sexta das 09h às 18h.",
           "map": {
             "latitude": -20.352185,
             "longitude": -40.297244

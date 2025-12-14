@@ -92,7 +92,7 @@ export function OurStoreMap({ stores, center }: Props) {
 
   return (
     <div className={styles.storeMapContainer} >
-      <div ref={mapRef} className={styles.storeMap} style={{ height: '100%', width: '100%', zIndex: 0 }} />
+      <div ref={mapRef} className={styles.storeMap}  />
     </div>
   )
 }

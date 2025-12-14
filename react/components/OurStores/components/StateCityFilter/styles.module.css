@@ -4,7 +4,11 @@
   gap: 1rem;
   width: 100%;
 }
-
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
 .select {
   padding: 0.5rem;
 }
