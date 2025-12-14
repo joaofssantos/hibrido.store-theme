@@ -1,16 +1,25 @@
-.store-map-container {
-    height: 400px;
+.storeMapContainer {
+    height: calc(100vh - 250px);
     width: 100%;
+    max-width: 800px;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 1rem;
     z-index: 0;
 }
 
-.store-map {
+@media(max-width: 768px) {
+    .storeMapContainer {
+        height: calc(100vh - 600px);
+    }
+
+}
+
+.storeMap {
     height: 100%;
     width: 100%;
     z-index: 0;
+    
 }
 
 .store-popup {

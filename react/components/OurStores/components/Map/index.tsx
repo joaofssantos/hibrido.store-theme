@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import { Store, Map } from '../../types'
+import styles from './styles.modules.css'
 
 // Fix leaflet icon issue
 // @ts-ignore
@@ -24,7 +25,9 @@ export function OurStoreMap({ stores, center }: Props) {
   useEffect(() => {
     if (!mapRef.current) return
 
+    // Initialize map if not already initialized
     if (!mapInstanceRef.current) {
+      // Inject Leaflet CSS
       const link = document.createElement('link')
       link.rel = 'stylesheet'
       link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
@@ -41,11 +44,6 @@ export function OurStoreMap({ stores, center }: Props) {
       setTimeout(() => {
         mapInstanceRef.current?.invalidateSize()
       }, 200)
-    }
-
-    // Update map view if center is provided
-    if (center && mapInstanceRef.current) {
-      mapInstanceRef.current.setView([center.latitude, center.longitude], 15)
     }
 
     // Clear old markers
@@ -66,7 +64,7 @@ export function OurStoreMap({ stores, center }: Props) {
 
         marker.bindPopup(`
           <div style="font-size: 14px; line-height: 1.4;">
-            <strong style="display: block; margin-bottom: 4px; color: #0f3e99;">${store.__editorItemTitle}</strong><br/>
+            <strong style="display: block; margin-bottom: 4px; color: #0f3e99;">${store.title}</strong><br/>
             ${store.addressLabel || ''}<br/>
             ${store.timeLabel || ''}
           </div>
@@ -79,23 +77,22 @@ export function OurStoreMap({ stores, center }: Props) {
       }
     })
 
-    // Fit bounds if there are markers and no specific center is selected
-    if (hasMarkers && mapInstanceRef.current && !center) {
+    // Fit bounds if there are markers
+    if (hasMarkers && mapInstanceRef.current) {
       mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] })
     }
-    
-    // Invalidate size to ensure map renders correctly after layout changes
-    if (mapInstanceRef.current) {
-        setTimeout(() => {
-            mapInstanceRef.current?.invalidateSize()
-        }, 100)
-    }
 
-  }, [stores, center])
+  }, [stores])
+
+  useEffect(() => {
+    if (center && mapInstanceRef.current) {
+        mapInstanceRef.current.setView([center.latitude, center.longitude], 15)
+    }
+  }, [center])
 
   return (
-    <div className="store-map-container" style={{ height: '100%', maxWidth: '600px', width: '100%', borderRadius: '8px', overflow: 'hidden', marginTop: '1rem', zIndex: 0 }}>
-      <div ref={mapRef} className="store-map" style={{ height: '100%', width: '100%', zIndex: 0 }} />
+    <div className={styles.storeMapContainer} >
+      <div ref={mapRef} className={styles.storeMap} style={{ height: '100%', width: '100%', zIndex: 0 }} />
     </div>
   )
 }

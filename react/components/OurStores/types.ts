@@ -11,6 +11,7 @@ export type Filter = {
 
 export type Store = {
   __editorItemTitle: string
+  title?: string
   phone?: string
   addressLabel?: string
   addressNumber?: string

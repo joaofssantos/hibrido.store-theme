@@ -1,33 +1,59 @@
 import React from "react";
-import classNames from "classnames";
 import styles from "./styles.module.css";
 import type { IProps, Store, Map } from "../../types";
 
-export function FilterItems({ stores = [], setCenter }: Pick<IProps, "stores"> & { setCenter: (map: Map) => void }) {
-  return <FilterItemsList stores={stores} setCenter={setCenter} />;
+export function FilterItems({
+  stores = [],
+  setCenter,
+  filterTitle,
+}: Pick<IProps, "stores"> & {
+  setCenter: (map: Map) => void;
+  filterTitle?: string;
+}) {
+  return (
+    <FilterItemsList
+      stores={stores}
+      setCenter={setCenter}
+      filterTitle={filterTitle}
+    />
+  );
 }
 
-function FilterItemsList({ stores = [], setCenter }: Pick<IProps, "stores"> & { setCenter: (map: Map) => void }) {
+function FilterItemsList({
+  stores = [],
+  setCenter,
+  filterTitle,
+}: Pick<IProps, "stores"> & {
+  setCenter: (map: Map) => void;
+  filterTitle?: string;
+}) {
   return (
-    <div className={classNames("flex flex-column", styles.stores)}>
+    <div className={styles.filterItemsContainer}>
+      <h3>{filterTitle}</h3>
       {stores?.map((store) => (
-        <FilterItem key={store.__editorItemTitle} {...store} setCenter={setCenter} />
+        <FilterItem
+          key={store.__editorItemTitle}
+          {...store}
+          setCenter={setCenter}
+        />
       ))}
     </div>
   );
 }
 
-export function FilterItem(p: Readonly<Store> & { setCenter: (map: Map) => void }) {
+export function FilterItem(
+  p: Readonly<Store> & { setCenter: (map: Map) => void }
+) {
   const setCurrentMap = () => {
     if (p.map) {
-      p.setCenter(p.map)
+      p.setCenter(p.map);
     }
   };
 
   return (
     <article
       aria-labelledby={p.__editorItemTitle}
-      className={classNames("relative pointer", styles.store)}
+      className={styles.store}
       onClick={() => p.map && setCurrentMap()}
       onKeyDown={(e: React.KeyboardEvent) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -37,7 +63,7 @@ export function FilterItem(p: Readonly<Store> & { setCenter: (map: Map) => void 
       }}
     >
       <h3>{p.__editorItemTitle}</h3>
-      <div className={classNames("flex flex-column", styles.items)}>
+      <div className={styles.items}>
         <ItemLocation
           addressLabel={p.addressLabel}
           addressNumber={p.addressNumber}
@@ -62,7 +88,7 @@ function ItemLocation({
   state,
   cep,
   map,
-  onViewMap
+  onViewMap,
 }: Pick<
   Store,
   | "addressLabel"
@@ -76,20 +102,20 @@ function ItemLocation({
   if (!addressLabel) return null;
 
   return (
-    <div className={classNames("flex items-center", styles.item)}>
+    <div className={styles.item}>
       <address className="w-100 fs-normal">
         <p>
-          {addressLabel}, {addressNumber}, {neighborhood}, {city}, {state},
-          {cep}
+          {addressLabel}, {addressNumber}, {neighborhood}, {city}, {state},{cep}
         </p>
         {map && (
           <>
-            <button 
+            <button
               tabIndex={0}
               onClick={(e) => {
                 e.stopPropagation();
                 onViewMap();
               }}
+			  className={styles.viewMapButton}
             >
               Ver no mapa
             </button>
@@ -109,5 +135,3 @@ function ItemTime({ timeLabel }: Pick<Store, "timeLabel">) {
     </time>
   );
 }
-
-

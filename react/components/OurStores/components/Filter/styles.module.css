@@ -38,12 +38,12 @@
 
 .container {
   grid-area: filter;
+
 }
 @media (min-width: 1026px) {
   .container {
     border: 1px solid #E7E7E7;
     border-radius: 8px;
-    max-width: max(29.375rem, min(6.837rem + 35.181vw, 38.5rem));
     height: min-content;
   }
 }
@@ -58,7 +58,6 @@
   .header__container {
     align-items: center;
     padding: 0.25rem 1.5rem;
-    height: max(3.5rem, min(1.648rem + 2.892vw, 4.25rem));
   }
 }
 @media (max-width: 1025px) {
@@ -81,38 +80,4 @@
   .content {
     margin-right: max(0.5rem, min(-0.117rem + 0.964vw, 0.75rem));
   }
-}
-.content::-webkit-scrollbar {
-  height: 7px;
-  width: 7px;
-}
-.content::-webkit-scrollbar-track {
-  border-radius: 20px;
-  background-color: transparent;
-}
-.content::-webkit-scrollbar-track:hover {
-  background-color: transparent;
-}
-.content::-webkit-scrollbar-track:active {
-  background-color: transparent;
-}
-.content::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #D1D1D1;
-}
-.content::-webkit-scrollbar-thumb:hover {
-  background-color: #b8b8b8;
-}
-.content::-webkit-scrollbar-thumb:active {
-  background-color: #b8b8b8;
-}
-.content::-webkit-scrollbar-track-piece:end {
-  background-color: #E8E6E5;
-  margin-bottom: 24px;
-  border-radius: 20px;
-}
-.content::-webkit-scrollbar-track-piece:start {
-  background: #E8E6E5;
-  margin-top: 32px;
-  border-radius: 20px;
 }

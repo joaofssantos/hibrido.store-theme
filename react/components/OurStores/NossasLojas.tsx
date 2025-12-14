@@ -1,7 +1,7 @@
 import React, { Suspense, useState, useMemo } from "react";
 import { NoSSR } from "vtex.render-runtime";
 import type { IProps, Map } from "./types";
-import { Filter } from "./components/Filter";
+import { StateCityFilter } from "./components/StateCityFilter";
 import { FilterItems } from "./components/FilterItems";
 import styles from "./styles.module.css";
 
@@ -54,19 +54,18 @@ export const OurStores = (props: IProps) => {
   return (
     <div className={styles.mainContainer}>
       <h2>{props.title}</h2>
-      
-      <section className={styles.mapSection}>
-        <Filter 
-          {...props.filter}
+ 
+        <StateCityFilter
           states={states}
           cities={cities}
           selectedState={selectedState}
           selectedCity={selectedCity}
           onChangeState={handleStateChange}
           onChangeCity={handleCityChange}
-        >
-          <FilterItems stores={filteredStores} setCenter={setCenter} />
-        </Filter>
+        />
+
+      <section className={styles.mapSection}>
+        <FilterItems stores={filteredStores} setCenter={setCenter} filterTitle={props.filter?.title} />
 
         <NoSSR>
           <Suspense fallback={<div>Carregando mapa...</div>}>

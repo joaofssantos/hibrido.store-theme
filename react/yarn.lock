@@ -1446,10 +1446,10 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
-"@types/leaflet@^1.9.21":
-  version "1.9.21"
-  resolved "https://registry.yarnpkg.com/@types/leaflet/-/leaflet-1.9.21.tgz#542e8f91250bc444f8a1416d472f5b518d83e979"
-  integrity sha512-TbAd9DaPGSnzp6QvtYngntMZgcRk+igFELwR2N99XZn7RXUdKgsXMR+28bUO0rPsWp8MIu/f47luLIQuSLYv/w==
+"@types/leaflet@1.7.7":
+  version "1.7.7"
+  resolved "https://registry.npmjs.org/@types/leaflet/-/leaflet-1.7.7.tgz#3c9f629126e03405ed68cc1aa395e32df3312376"
+  integrity sha512-5/nNqTviSqUwPxbS3PlHl8ODjfnlpOXSFtUAi7dexnisO8E3pfyotChRY/hlIYGvbBiBcKNd6V18xA8O4OpHiQ==
   dependencies:
     "@types/geojson" "*"
 
@@ -2096,6 +2096,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.3.2:
+  version "2.5.1"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 cliui@^6.0.0:
   version "6.0.0"
